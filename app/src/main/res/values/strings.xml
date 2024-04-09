@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Управление задачами</string>
+    <string name="title">Заголовок</string>
+    <string name="description">Описание</string>
+    <string name="select_date">Выбрать дату</string>
+    <string name="select_time">Выбрать время</string>
+    <string name="save">Сохранить</string>
+    <string name="add_task">Добавить задачу</string>
+    <string-array name="day_names">
+        <item>Пн</item>
+        <item>Вт</item>
+        <item>Ср</item>
+        <item>Чт</item>
+        <item>Пт</item>
+        <item>Сб</item>
+        <item>Вс</item>
+    </string-array>
+    <string name="once">Once</string>
+    <string name="recurring">Recurring</string>
+    <string name="choose_days">Select Days</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+</resources>
