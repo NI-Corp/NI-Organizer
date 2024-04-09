@@ -3,6 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_margin="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:onClick="onBackPressed"/>
+
     <EditText
         android:id="@+id/titleEditText"
         android:layout_width="match_parent"
@@ -10,7 +20,8 @@
         android:hint="Task Title"
         android:padding="8dp"
         android:layout_margin="8dp"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:layout_below="@id/backButton"/>
 
     <EditText
         android:id="@+id/descriptionEditText"
@@ -28,8 +39,8 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Save Changes"
         android:layout_below="@id/descriptionEditText"
-        android:layout_centerHorizontal="true"
-        android:text="Save Changes"/>
+        android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>

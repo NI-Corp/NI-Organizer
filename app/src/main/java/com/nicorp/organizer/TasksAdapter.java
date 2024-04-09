@@ -1,5 +1,6 @@
 package com.nicorp.organizer;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,13 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         holder.description.setText(task.getDescription());
         holder.taskTime.setText(formatTime(task.getDateTime()));
 
+        holder.taskMainLayout.setOnClickListener(v -> {
+            // Go to the task details screen with putExtra params
+            Intent taskDetailsIntent = new Intent(v.getContext(), EditTaskActivity.class);
+            taskDetailsIntent.putExtra("task", task);
+            v.getContext().startActivity(taskDetailsIntent);
+        });
+
         long currentTime = System.currentTimeMillis();
         long taskTime = task.getDateTime();
         long timeDifference = taskTime - currentTime;
@@ -49,6 +57,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
 
     static class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView title, description, taskTime, remainingTime;
+        ConstraintLayout taskMainLayout;
 
         TaskViewHolder(View itemView) {
             super(itemView);
@@ -56,6 +65,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             description = itemView.findViewById(R.id.taskDescription);
             taskTime = itemView.findViewById(R.id.taskTime);
             remainingTime = itemView.findViewById(R.id.remainingTime);
+            taskMainLayout = itemView.findViewById(R.id.taskMainLayout);
             }
     }
 
