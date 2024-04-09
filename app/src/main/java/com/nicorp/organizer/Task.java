@@ -1,5 +1,7 @@
 package com.nicorp.organizer;
 
+import android.util.Log;
+
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.UUID;
@@ -20,6 +22,8 @@ public class Task implements Serializable {
         this.dateTime = dateTime;
         this.isRecurring = false;
         this.taskId = generateUniqueId(); // Здесь generateUniqueId() - ваш метод для генерации уникального идентификатора
+
+        Log.d("TaskId", String.valueOf(taskId));
     }
 
     private int generateUniqueId() {

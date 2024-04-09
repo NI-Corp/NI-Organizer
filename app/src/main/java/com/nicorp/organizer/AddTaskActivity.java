@@ -36,6 +36,8 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.function.LongFunction;
+
 import com.jaredrummler.android.colorpicker.ColorPickerDialog;
 import com.jaredrummler.android.colorpicker.ColorPickerDialogListener;
 import com.jaredrummler.android.colorpicker.ColorShape;
@@ -195,6 +197,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
 
         if (radioButtonOnce.isChecked()) {
             task = new Task(title, description, dateTime);
+            Log.d("taskId", String.valueOf(task.getTaskId())); // taskId == 0 if task is new.getTaskId();
             Log.d("title", title);
             Log.d("description", description);
             saveSingleTask(task);
