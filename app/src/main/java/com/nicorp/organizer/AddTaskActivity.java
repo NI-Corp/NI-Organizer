@@ -233,21 +233,8 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
 
     @SuppressLint({"ScheduleRecurringAlarm", "ScheduleExactAlarm"})
     private void saveSingleTask(Task SingleTask) {
-        SharedPreferences sharedPreferences = getSharedPreferences("Tasks", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        Gson gson = new Gson();
-        String jsonTasks = sharedPreferences.getString("tasks", null);
-        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
-        ArrayList<Task> tasks;
-        if (jsonTasks == null) {
-            tasks = new ArrayList<>();
-        } else {
-            tasks = gson.fromJson(jsonTasks, type);
-        }
-        tasks.add(SingleTask);
-        String json = gson.toJson(tasks);
-        editor.putString("tasks", json);
-        editor.apply();
+        // Save the task to SharedPreferences
+        SPHelper.saveTask(SingleTask, getBaseContext());
 
         // Set AlarmManager for notification at the specified time
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

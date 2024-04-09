@@ -50,4 +50,50 @@ public class SPHelper {
         }
         return null;
     }
+
+    public static void deleteTask(int taskId, Context context) {
+        // TODO: Delete the task from SharedPreferences
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Tasks", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String jsonTasks = sharedPreferences.getString("tasks", null);
+        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+        ArrayList<Task> tasks;
+        if (jsonTasks == null) {
+            tasks = new ArrayList<>();
+        } else {
+            tasks = gson.fromJson(jsonTasks, type);
+        }
+        for (int i = 0; i < tasks.size(); i++) {
+            if (tasks.get(i).getTaskId() == taskId) {
+                tasks.remove(i);
+                break;
+            }
+        }
+        String json = gson.toJson(tasks);
+        editor.putString("tasks", json);
+    }
+
+    public static void changeTask(int taskId, String title, String description, long dateTime, Context context) {
+        // TODO: Change the task in SharedPreferences
+        SharedPreferences sharedPreferences = context.getSharedPreferences("Tasks", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String jsonTasks = sharedPreferences.getString("tasks", null);
+        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+        ArrayList<Task> tasks;
+        if (jsonTasks == null) {
+            tasks = new ArrayList<>();
+        } else {
+            tasks = gson.fromJson(jsonTasks, type);
+        }
+        for (Task task : tasks) {
+            if (task.getTaskId() == taskId) {
+                task.setTitle(title);
+                task.setDescription(description);
+                task.setDateTime(dateTime);
+                break;
+            }
+        }
+    }
 }
