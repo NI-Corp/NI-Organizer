@@ -68,6 +68,7 @@ public class EditTaskActivity extends AppCompatActivity {
         task.setDescription(updatedDescription);
 
         // TODO: Save the updated task to the database or SharedPreferences
+
     }
 
 
