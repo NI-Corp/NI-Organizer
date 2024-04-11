@@ -21,4 +21,3 @@ dependencyResolutionManagement {
 
 rootProject.name = "NI Organizer"
 include(":app")
- 

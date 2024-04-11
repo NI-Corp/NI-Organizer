@@ -60,7 +60,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_add_to_do_item);
+        setContentView(R.layout.activity_add_task);
 
         titleEditText = findViewById(R.id.titleEditText);
         descriptionEditText = findViewById(R.id.descriptionEditText);
