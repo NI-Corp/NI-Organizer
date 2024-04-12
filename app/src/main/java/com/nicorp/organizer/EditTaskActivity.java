@@ -200,7 +200,7 @@ public class EditTaskActivity extends AppCompatActivity implements ColorPickerDi
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        deleteTask();
+                        deleteTaskWithoutDialog();
                         saveChanges();
                         finish();
                     }
@@ -332,9 +332,14 @@ public class EditTaskActivity extends AppCompatActivity implements ColorPickerDi
         finish(); // Close activity
     }
 
-    private void deleteTask() {
+    private void deleteTaskWithoutDialog() {
         // TODO: Delete the task from the database or SharedPreferences
         SPHelper.deleteTaskWithoutDialog(task.getTaskId(), task.getGroupId(), this);
+    }
+
+    private void deleteTask() {
+        // TODO: Delete the task from the database or SharedPreferences
+        SPHelper.deleteTask(task.getTaskId(), task.getGroupId(), this);
     }
 
     // Create ColorPickerDialog
