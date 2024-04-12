@@ -195,6 +195,11 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
         String description = descriptionEditText.getText().toString().trim();
         long dateTime = calendar.getTimeInMillis();// Get the selected date and time, e.g., from DatePickerDialog and TimePickerDialog
 
+        if (title.isEmpty() || description.isEmpty()) {
+            Toast.makeText(this, "Please enter title and description", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (radioButtonOnce.isChecked()) {
             task = new Task(title, description, dateTime);
             Log.d("taskId", String.valueOf(task.getTaskId())); // taskId == 0 if task is new.getTaskId();
