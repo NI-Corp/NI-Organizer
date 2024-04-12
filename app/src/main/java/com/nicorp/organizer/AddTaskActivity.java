@@ -201,7 +201,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
         }
 
         if (radioButtonOnce.isChecked()) {
-            task = new Task(title, description, dateTime);
+            task = new Task(title, description, selectedColor, dateTime);
             Log.d("taskId", String.valueOf(task.getTaskId())); // taskId == 0 if task is new.getTaskId();
             Log.d("title", title);
             Log.d("description", description);
@@ -227,7 +227,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
                     Log.d("title", title);
                     Log.d("description", description);
 
-                    Task recurringTask = new Task(title, description, cal.getTimeInMillis(), true);
+                    Task recurringTask = new Task(title, description, selectedColor, cal.getTimeInMillis(), true);
                     saveSingleTask(recurringTask);
                 }
             } else {

@@ -35,6 +35,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         holder.title.setText(task.getTitle());
         holder.description.setText(task.getDescription());
         holder.taskTime.setText(formatTime(task.getDateTime()));
+        holder.itemColor.setBackgroundColor(task.getColor());
 
         holder.taskMainLayout.setOnClickListener(v -> {
             // Go to the task details screen with putExtra params
@@ -57,7 +58,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
 
     static class TaskViewHolder extends RecyclerView.ViewHolder {
         TextView title, description, taskTime, remainingTime;
-        ConstraintLayout taskMainLayout;
+        ConstraintLayout taskMainLayout, itemColor;
 
         TaskViewHolder(View itemView) {
             super(itemView);
@@ -66,6 +67,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             taskTime = itemView.findViewById(R.id.taskTime);
             remainingTime = itemView.findViewById(R.id.remainingTime);
             taskMainLayout = itemView.findViewById(R.id.taskMainLayout);
+            itemColor = itemView.findViewById(R.id.itemColor);
             }
     }
 

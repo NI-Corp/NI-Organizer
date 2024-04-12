@@ -11,15 +11,17 @@ public class Task implements Serializable {
     private String title;
     private String description;
     private long dateTime;
+    private int color;
 ;
     private boolean[] daysOfWeek; // Represents selected days of the week for recurring tasks
     private boolean isRecurring;
 
     // Constructor for non-recurring task
-    public Task(String title, String description, long dateTime) {
+    public Task(String title, String description, int color, long dateTime) {
         this.title = title;
         this.description = description;
         this.dateTime = dateTime;
+        this.color = color;
         this.isRecurring = false;
         this.taskId = generateUniqueId(); // Здесь generateUniqueId() - ваш метод для генерации уникального идентификатора
 
@@ -33,10 +35,11 @@ public class Task implements Serializable {
     }
 
     // Constructor for recurring task
-    public Task(String title, String description, long dateTime, boolean isRecurring) {
+    public Task(String title, String description, int color, long dateTime, boolean isRecurring) {
         this.title = title;
         this.description = description;
         this.dateTime = dateTime;
+        this.color = color;
         this.isRecurring = isRecurring;
         this.taskId = generateUniqueId(); // Здесь generateUniqueId() - ваш метод для генерации уникального идентификатора
     }
@@ -99,5 +102,13 @@ public class Task implements Serializable {
                 ", daysOfWeek=" + Arrays.toString(daysOfWeek) +
                 ", isRecurring=" + isRecurring +
                 '}';
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }
