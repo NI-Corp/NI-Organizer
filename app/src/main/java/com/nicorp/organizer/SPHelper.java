@@ -112,4 +112,25 @@ public class SPHelper {
             }
         }
     }
+
+    public static int getGroupCount(Context baseContext) {
+        // TODO: Get the max group id
+        SharedPreferences sharedPreferences = baseContext.getSharedPreferences("Tasks", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonTasks = sharedPreferences.getString("tasks", null);
+        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+        ArrayList<Task> tasks;
+        if (jsonTasks == null) {
+            tasks = new ArrayList<>();
+        } else {
+            tasks = gson.fromJson(jsonTasks, type);
+        }
+        int maxGroupId = 0;
+        for (Task task : tasks) {
+            if (task.getGroupId() > maxGroupId) {
+                maxGroupId = task.getGroupId();
+            }
+        }
+        return maxGroupId;
+    }
 }

@@ -534,9 +534,12 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
             return;
         }
 
+        // Count how many groups are in the database
+        int groupCount = SPHelper.getGroupCount(getBaseContext()); // Count how many groups are in the database
+
         if (radioButtonOnce.isChecked()) {
             task = new Task(title, description, selectedColor, dateTime);
-            saveSingleTask(task);
+            saveSingleTask(task, 0);
         } else if (radioButtonRecurring.isChecked()) {
             List<Integer> selectedDays = getSelectedDays();
             if (!selectedDays.isEmpty()) {
@@ -545,8 +548,8 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
                     cal.setTimeInMillis(dateTime);
                     cal.set(Calendar.DAY_OF_WEEK, day);
                     taskDay = day;
-                    Task recurringTask = new Task(title, description, selectedColor, cal.getTimeInMillis(), true);
-                    saveSingleTask(recurringTask);
+                    Task recurringTask = new Task(title, description, selectedColor, cal.getTimeInMillis(), true, 1);
+                    saveSingleTask(recurringTask, groupCount+1);
                 }
             } else {
                 Toast.makeText(this, "Choose at least one day", Toast.LENGTH_SHORT).show();
@@ -556,7 +559,10 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
 
     // Save single task and set alarm
     @SuppressLint({"ScheduleRecurringAlarm", "ScheduleExactAlarm"})
-    private void saveSingleTask(Task singleTask) {
+    private void saveSingleTask(Task singleTask, int groupId) {
+
+        singleTask.setGroupId(groupId);
+
         SPHelper.saveTask(singleTask, getBaseContext()); // Save to SharedPreferences
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);

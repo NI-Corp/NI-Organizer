@@ -12,8 +12,7 @@ public class Task implements Serializable {
     private String description;
     private long dateTime;
     private int color;
-;
-    private boolean[] daysOfWeek; // Represents selected days of the week for recurring tasks
+;   private int groupId = 0;
     private boolean isRecurring;
 
     // Constructor for non-recurring task
@@ -35,12 +34,13 @@ public class Task implements Serializable {
     }
 
     // Constructor for recurring task
-    public Task(String title, String description, int color, long dateTime, boolean isRecurring) {
+    public Task(String title, String description, int color, long dateTime, boolean isRecurring, int groupId) {
         this.title = title;
         this.description = description;
         this.dateTime = dateTime;
         this.color = color;
         this.isRecurring = isRecurring;
+        this.groupId = groupId;
         this.taskId = generateUniqueId(); // Здесь generateUniqueId() - ваш метод для генерации уникального идентификатора
     }
 
@@ -69,14 +69,6 @@ public class Task implements Serializable {
         this.dateTime = dateTime;
     }
 
-    public boolean[] getDaysOfWeek() {
-        return daysOfWeek;
-    }
-
-    public void setDaysOfWeek(boolean[] daysOfWeek) {
-        this.daysOfWeek = daysOfWeek;
-    }
-
     public boolean isRecurring() {
         return isRecurring;
     }
@@ -99,7 +91,6 @@ public class Task implements Serializable {
                 "title='" + title + '\'' +
                 ", description='" + description + '\'' +
                 ", dateTime=" + dateTime +
-                ", daysOfWeek=" + Arrays.toString(daysOfWeek) +
                 ", isRecurring=" + isRecurring +
                 '}';
     }
@@ -110,5 +101,13 @@ public class Task implements Serializable {
 
     public void setColor(int color) {
         this.color = color;
+    }
+
+    public int getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(int groupId) {
+        this.groupId = groupId;
     }
 }

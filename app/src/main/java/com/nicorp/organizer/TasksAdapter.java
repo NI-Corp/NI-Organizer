@@ -1,6 +1,7 @@
 package com.nicorp.organizer;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,7 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
             Intent taskDetailsIntent = new Intent(v.getContext(), EditTaskActivity.class);
             taskDetailsIntent.putExtra("task", task);
             v.getContext().startActivity(taskDetailsIntent);
+            Log.d("groupId", String.valueOf(task.getGroupId()));
         });
 
         long currentTime = System.currentTimeMillis();
