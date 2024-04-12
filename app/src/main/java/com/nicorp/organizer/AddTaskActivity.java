@@ -27,6 +27,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
@@ -207,14 +209,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
             Log.d("description", description);
             saveSingleTask(task);
         } else if (radioButtonRecurring.isChecked()) {
-            List<Integer> selectedDays = new ArrayList<>();
-            if (checkboxSunday.isChecked()) selectedDays.add(Calendar.SUNDAY);
-            if (checkboxMonday.isChecked()) selectedDays.add(Calendar.MONDAY);
-            if (checkboxTuesday.isChecked()) selectedDays.add(Calendar.TUESDAY);
-            if (checkboxWednesday.isChecked()) selectedDays.add(Calendar.WEDNESDAY);
-            if (checkboxThursday.isChecked()) selectedDays.add(Calendar.THURSDAY);
-            if (checkboxFriday.isChecked()) selectedDays.add(Calendar.FRIDAY);
-            if (checkboxSaturday.isChecked()) selectedDays.add(Calendar.SATURDAY);
+            List<Integer> selectedDays = getIntegers();
 
             if (!selectedDays.isEmpty()) {
                 for (Integer day : selectedDays) {
@@ -234,6 +229,19 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
                 Toast.makeText(this, "Choose at least one day", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+    @NonNull
+    private List<Integer> getIntegers() {
+        List<Integer> selectedDays = new ArrayList<>();
+        if (checkboxSunday.isChecked()) selectedDays.add(Calendar.SUNDAY);
+        if (checkboxMonday.isChecked()) selectedDays.add(Calendar.MONDAY);
+        if (checkboxTuesday.isChecked()) selectedDays.add(Calendar.TUESDAY);
+        if (checkboxWednesday.isChecked()) selectedDays.add(Calendar.WEDNESDAY);
+        if (checkboxThursday.isChecked()) selectedDays.add(Calendar.THURSDAY);
+        if (checkboxFriday.isChecked()) selectedDays.add(Calendar.FRIDAY);
+        if (checkboxSaturday.isChecked()) selectedDays.add(Calendar.SATURDAY);
+        return selectedDays;
     }
 
     @SuppressLint({"ScheduleRecurringAlarm", "ScheduleExactAlarm"})
