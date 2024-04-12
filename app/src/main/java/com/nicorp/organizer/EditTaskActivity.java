@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,7 +20,7 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private Task task;
     private TextView titleEditText, descriptionEditText;
-    private Button saveButton, backButton;
+    private ImageView saveButton, cancelButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +38,10 @@ public class EditTaskActivity extends AppCompatActivity {
                 descriptionEditText = findViewById(R.id.descriptionEditText);
                 titleEditText.setText(task.getTitle());
                 descriptionEditText.setText(task.getDescription());
-                backButton = findViewById(R.id.backButton);
+                cancelButton = findViewById(R.id.cancelButton);
                 saveButton = findViewById(R.id.saveButton);
 
-                backButton.setOnClickListener(new View.OnClickListener() {
+                cancelButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         finish();
@@ -70,6 +71,4 @@ public class EditTaskActivity extends AppCompatActivity {
         // TODO: Save the updated task to the database or SharedPreferences
 
     }
-
-
 }
