@@ -53,7 +53,7 @@ public class SPHelper {
         return null;
     }
 
-    public static void deleteTask(int taskId, Context context) {
+    public static void deleteTask(int taskId, int groupId, Context context) {
         // Ask the user if they want to delete the task
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Delete Task");
@@ -64,22 +64,44 @@ public class SPHelper {
             SharedPreferences.Editor editor = sharedPreferences.edit();
             Gson gson = new Gson();
             String jsonTasks = sharedPreferences.getString("tasks", null);
-            Type type = new TypeToken<ArrayList<Task>>() {}.getType();
-            ArrayList<Task> tasks;
-            if (jsonTasks == null) {
-                tasks = new ArrayList<>();
-            } else {
-                tasks = gson.fromJson(jsonTasks, type);
-            }
-            for (Task task : tasks) {
-                if (task.getTaskId() == taskId) {
-                    tasks.remove(task);
-                    break;
+            if (groupId != 0) {
+                // TODO: Delete the task from SharedPreferences by group id
+                Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+                ArrayList<Task> tasks;
+                if (jsonTasks == null) {
+                    tasks = new ArrayList<>();
+                } else {
+                    tasks = gson.fromJson(jsonTasks, type);
                 }
+                ArrayList<Task> tasksWithSameGroupId = new ArrayList<>();
+                for (Task task : tasks) {
+                    if (task.getGroupId() != groupId) {
+                        tasksWithSameGroupId.add(task);
+                    }
+                }
+                String json = gson.toJson(tasksWithSameGroupId);
+                editor.clear();
+                editor.putString("tasks", json);
+                editor.apply();
+
+            } else {
+                Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+                ArrayList<Task> tasks;
+                if (jsonTasks == null) {
+                    tasks = new ArrayList<>();
+                } else {
+                    tasks = gson.fromJson(jsonTasks, type);
+                }
+                for (Task task : tasks) {
+                    if (task.getTaskId() == taskId) {
+                        tasks.remove(task);
+                        break;
+                    }
+                }
+                String json = gson.toJson(tasks);
+                editor.putString("tasks", json);
+                editor.apply();
             }
-            String json = gson.toJson(tasks);
-            editor.putString("tasks", json);
-            editor.apply();
             // finish the activity
             ((Activity)context).finish();
         });
@@ -132,5 +154,26 @@ public class SPHelper {
             }
         }
         return maxGroupId;
+    }
+
+    public static ArrayList<Task> getTasksWithSameGroupId(int groupId, EditTaskActivity editTaskActivity) {
+        // TODO: Get the tasks with the same group id
+        SharedPreferences sharedPreferences = editTaskActivity.getSharedPreferences("Tasks", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonTasks = sharedPreferences.getString("tasks", null);
+        Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+        ArrayList<Task> tasks;
+        if (jsonTasks == null) {
+            tasks = new ArrayList<>();
+        } else {
+            tasks = gson.fromJson(jsonTasks, type);
+        }
+        ArrayList<Task> tasksWithSameGroupId = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getGroupId() == groupId) {
+                tasksWithSameGroupId.add(task);
+            }
+        }
+        return tasksWithSameGroupId;
     }
 }

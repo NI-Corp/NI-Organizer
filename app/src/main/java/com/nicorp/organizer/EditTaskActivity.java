@@ -90,34 +90,52 @@ public class EditTaskActivity extends AppCompatActivity {
                     String date = new SimpleDateFormat("dd.MM.yyyy").format(cal.getTime());
                     startDateTextView.setText(date);
                 } else {
-                    setRecurringOptionsVisibility(true);
-                    // get day from task.getDateTime()
-                    Calendar cal = Calendar.getInstance();
-                    cal.setTimeInMillis(task.getDateTime());
-                    // get day of week
-                    int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+                    // find all tasks with same group id by SPHelper
+                    ArrayList<Task> tasksWithSameGroupId = SPHelper.getTasksWithSameGroupId(task.getGroupId(), this);
 
-                    switch (dayOfWeek) {
-                        case Calendar.SUNDAY:
-                            checkboxSunday.setChecked(true);
-                            break;
-                        case Calendar.MONDAY:
-                            checkboxMonday.setChecked(true);
-                            break;
-                        case Calendar.TUESDAY:
-                            checkboxTuesday.setChecked(true);
-                            break;
-                        case Calendar.WEDNESDAY:
-                            checkboxWednesday.setChecked(true);
-                            break;
-                        case Calendar.THURSDAY:
-                            checkboxThursday.setChecked(true);
-                            break;
-                        case Calendar.FRIDAY:
-                            checkboxFriday.setChecked(true);
-                            break;
-                        case Calendar.SATURDAY:
-                            checkboxSaturday.setChecked(true);
+                    // Log names of all tasks with same group id
+                    for (Task taskWithSameGroupId : tasksWithSameGroupId) {
+                        Log.d("taskWithSameGroupId", String.valueOf(taskWithSameGroupId.getDateTime()));
+                    }
+
+                    // set visibility
+                    setRecurringOptionsVisibility(true);
+
+                    // set checkboxes for recurring tasks
+                    for (Task taskWithSameGroupId : tasksWithSameGroupId) {
+                        if (taskWithSameGroupId.getTaskId() == task.getTaskId()) {
+                            continue;
+                        } else {
+                            if (taskWithSameGroupId.isRecurring()) {
+                                // if the day of the week is the same, set the checkbox to checked
+                                // convert taskWithSameGroupId.getDateTime() (long) to Calendar
+                                Calendar cal = Calendar.getInstance();
+                                cal.setTimeInMillis(taskWithSameGroupId.getDateTime());
+                                // get the day of the week
+                                int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+                                Log.d("dayOfWeek", String.valueOf(dayOfWeek));
+                                // do the same for task.getDateTime() (long)
+                                cal.setTimeInMillis(task.getDateTime());
+                                int dayOfWeek2 = cal.get(Calendar.DAY_OF_WEEK);
+                                Log.d("dayOfWeek2", String.valueOf(dayOfWeek2));
+                                // check in checkboxes if the day of the week is the same for both tasks
+                                if (dayOfWeek == Calendar.SUNDAY || dayOfWeek2 == Calendar.SUNDAY) {
+                                    checkboxSunday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.MONDAY || dayOfWeek2 == Calendar.MONDAY) {
+                                    checkboxMonday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.TUESDAY || dayOfWeek2 == Calendar.TUESDAY) {
+                                    checkboxTuesday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.WEDNESDAY || dayOfWeek2 == Calendar.WEDNESDAY) {
+                                    checkboxWednesday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.THURSDAY || dayOfWeek2 == Calendar.THURSDAY) {
+                                    checkboxThursday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.FRIDAY || dayOfWeek2 == Calendar.FRIDAY) {
+                                    checkboxFriday.setChecked(true);
+                                }  if (dayOfWeek == Calendar.SATURDAY || dayOfWeek2 == Calendar.SATURDAY) {
+                                    checkboxSaturday.setChecked(true);
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -161,6 +179,6 @@ public class EditTaskActivity extends AppCompatActivity {
 
     private void deleteTask() {
         // TODO: Delete the task from the database or SharedPreferences
-        SPHelper.deleteTask(task.getTaskId(), this);
+        SPHelper.deleteTask(task.getTaskId(), task.getGroupId(), this);
     }
 }
