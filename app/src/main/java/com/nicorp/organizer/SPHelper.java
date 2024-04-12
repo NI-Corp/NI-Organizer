@@ -109,6 +109,55 @@ public class SPHelper {
         builder.show();
     }
 
+    public static void deleteTaskWithoutDialog(int taskId, int groupId, Context context) {
+        // TODO: Delete the task from SharedPreferences
+            SharedPreferences sharedPreferences = context.getSharedPreferences("Tasks", MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            Gson gson = new Gson();
+            String jsonTasks = sharedPreferences.getString("tasks", null);
+            if (groupId != 0) {
+                // TODO: Delete the task from SharedPreferences by group id
+                Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+                ArrayList<Task> tasks;
+                if (jsonTasks == null) {
+                    tasks = new ArrayList<>();
+                } else {
+                    tasks = gson.fromJson(jsonTasks, type);
+                }
+                ArrayList<Task> tasksWithSameGroupId = new ArrayList<>();
+                for (Task task : tasks) {
+                    if (task.getGroupId() != groupId) {
+                        tasksWithSameGroupId.add(task);
+                    }
+                }
+                String json = gson.toJson(tasksWithSameGroupId);
+                editor.clear();
+                editor.putString("tasks", json);
+                editor.apply();
+
+            } else {
+                Type type = new TypeToken<ArrayList<Task>>() {}.getType();
+                ArrayList<Task> tasks;
+                if (jsonTasks == null) {
+                    tasks = new ArrayList<>();
+                } else {
+                    tasks = gson.fromJson(jsonTasks, type);
+                }
+                for (Task task : tasks) {
+                    if (task.getTaskId() == taskId) {
+                        tasks.remove(task);
+                        break;
+                    }
+                }
+                String json = gson.toJson(tasks);
+                editor.putString("tasks", json);
+                editor.apply();
+            }
+            // finish the activity
+            ((Activity)context).finish();
+
+    }
+
     public static void changeTask(int taskId, String title, String description, long dateTime, Context context) {
         // TODO: Change the task in SharedPreferences
         SharedPreferences sharedPreferences = context.getSharedPreferences("Tasks", MODE_PRIVATE);
