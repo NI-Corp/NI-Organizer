@@ -388,6 +388,10 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_task);
 
+        // go to AIActivity
+        Intent intent = new Intent(AddTaskActivity.this, AIActivity.class);
+        startActivity(intent);
+
         // Initialize UI elements
         titleEditText = findViewById(R.id.titleEditText);
         descriptionEditText = findViewById(R.id.descriptionEditText);
