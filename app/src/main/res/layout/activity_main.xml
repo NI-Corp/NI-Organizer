@@ -36,4 +36,12 @@
         android:layout_margin="20dp"
         app:srcCompat="@drawable/add_btn" />
 
+    <ImageView
+        android:id="@+id/settingsButton"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="20dp"
+        app:srcCompat="@drawable/settings_btn" />
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
