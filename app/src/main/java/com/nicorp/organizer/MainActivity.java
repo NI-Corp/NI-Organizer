@@ -42,10 +42,19 @@ public class MainActivity extends AppCompatActivity {
         ).attach();
 
         ImageView addTaskButton = findViewById(R.id.addTaskButton);
+        ImageView settingsButton = findViewById(R.id.settingsButton);
         addTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
             }
         });
