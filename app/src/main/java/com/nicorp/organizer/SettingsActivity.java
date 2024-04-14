@@ -10,6 +10,7 @@ import android.widget.Spinner;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -35,7 +36,17 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         // Initialize UI elements
-        Spinner spinner = findViewById(R.id.spinner2);
+        Spinner spinner = findViewById(R.id.themeSpinner);
+        ConstraintLayout aboutLayout = findViewById(R.id.aboutLayout);
+
+        // Set click listener for About section
+        aboutLayout.setOnClickListener(v -> {
+            // create upper window with information about the app
+            final androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
+            builder.setTitle("О приложении");
+            builder.setMessage("Версия 1.0.0");
+            builder.show();
+        });
 
         // Create an ArrayAdapter using the string array and a default spinner layout
         List<String> list = new ArrayList<>();
