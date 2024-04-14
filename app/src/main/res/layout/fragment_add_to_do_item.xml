@@ -34,7 +34,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Изменение элемента"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -46,7 +46,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Название"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
@@ -62,7 +62,7 @@
                 android:inputType="text"
                 android:hint="Name"
                 android:textColorHint="#AAAAAA"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameLabelTextView" />
@@ -74,7 +74,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Описание"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
@@ -91,7 +91,7 @@
                 android:inputType="textMultiLine"
                 android:hint="Описание"
                 android:textColorHint="#AAAAAA"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/descriptionLabelTextView" />
@@ -113,7 +113,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Цвет"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/colorItem"
                 app:layout_constraintStart_toEndOf="@+id/colorItem"
@@ -138,7 +138,7 @@
                     android:layout_weight="1"
                     android:text="Дата/дни"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -182,7 +182,7 @@
                     android:layout_height="wrap_content"
                     android:text="1 января 2021"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
@@ -270,7 +270,7 @@
                     android:layout_weight="1"
                     android:text="Время начала"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="18sp" />
 
                 <TextView
@@ -279,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:text="12 : 00"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
