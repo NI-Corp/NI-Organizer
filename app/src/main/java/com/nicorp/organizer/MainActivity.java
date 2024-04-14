@@ -1,6 +1,7 @@
 package com.nicorp.organizer;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,6 +18,9 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String THEME_PREF = "theme_pref";
+    private static final String THEME_LIGHT = "light";
+    private static final String THEME_DARK = "dark";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +32,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         }
+
+        // Load theme from SharedPreferences
+        SharedPreferences preferences = getSharedPreferences("Themes", MODE_PRIVATE);
+        String savedTheme = preferences.getString(THEME_PREF, THEME_LIGHT); // Default to Light theme
+        if (savedTheme.equals(THEME_LIGHT)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+        }
+
         TabLayout daysTabLayout = findViewById(R.id.daysTabLayout);
         ViewPager2 tasksViewPager = findViewById(R.id.tasksViewPager);
         DaysPagerAdapter pagerAdapter = new DaysPagerAdapter(this);

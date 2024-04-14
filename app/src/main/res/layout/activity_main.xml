@@ -17,7 +17,7 @@
             app:tabPaddingEnd="2dp"
             app:tabPaddingStart="2dp"
             app:tabMaxWidth="60dp"
-            android:background="#FF101010"/>
+            android:background="?attr/colorBackground"/>
 
     </com.google.android.material.appbar.AppBarLayout>
 

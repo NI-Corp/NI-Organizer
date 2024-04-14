@@ -1,5 +1,6 @@
 package com.nicorp.organizer;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SettingsActivity extends AppCompatActivity {
+
+    private static final String THEME_PREF = "theme_pref";
+    private static final String THEME_LIGHT = "light";
+    private static final String THEME_DARK = "dark";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,20 +45,41 @@ public class SettingsActivity extends AppCompatActivity {
         // Set the adapter
         spinner.setAdapter(adapter);
 
+        // Load saved theme
+        SharedPreferences preferences = getSharedPreferences("Themes", MODE_PRIVATE);
+        String savedTheme = preferences.getString(THEME_PREF, THEME_LIGHT); // Default to Light theme
+        if (savedTheme.equals(THEME_LIGHT)) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+            spinner.setSelection(0);
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+            spinner.setSelection(1);
+        }
+
         // Change app theme based on user selection
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position == 0) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    saveTheme(THEME_LIGHT);
                 } else if (position == 1) {
                     AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    saveTheme(THEME_DARK);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 // Do nothing
             }
         });
+    }
+
+    private void saveTheme(String theme) {
+        SharedPreferences preferences = getSharedPreferences("Themes", MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString(THEME_PREF, theme);
+        editor.apply();
     }
 }
