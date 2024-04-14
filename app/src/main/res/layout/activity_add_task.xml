@@ -33,7 +33,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Добавление элемента"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Название"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
@@ -73,7 +73,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:text="Описание"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleEditText" />
@@ -112,7 +112,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:text="Цвет"
-                android:textColor="#FFFFFF"
+                android:textColor="?attr/colorText"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="@+id/colorItem"
                 app:layout_constraintStart_toEndOf="@+id/colorItem"
@@ -137,7 +137,7 @@
                     android:layout_weight="1"
                     android:text="Дата/дни"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="18sp" />
 
                 <RadioGroup
@@ -160,7 +160,7 @@
                         android:checked="true"
                         android:text="@string/once"
                         android:textAlignment="center"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/colorText" />
 
                     <RadioButton
                         android:id="@+id/radioButtonRecurring"
@@ -170,7 +170,7 @@
                         android:buttonTint="@color/white"
                         android:text="@string/recurring"
                         android:textAlignment="center"
-                        android:textColor="@color/white" />
+                        android:textColor="?attr/colorText" />
 
                 </RadioGroup>
 
@@ -181,7 +181,7 @@
                     android:layout_height="wrap_content"
                     android:text="1 января 2021"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
@@ -201,42 +201,42 @@
                             android:id="@+id/checkboxSunday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/sunday" />
 
                         <CheckBox
                             android:id="@+id/checkboxMonday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/monday" />
 
                         <CheckBox
                             android:id="@+id/checkboxTuesday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/tuesday" />
 
                         <CheckBox
                             android:id="@+id/checkboxWednesday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/wednesday" />
 
                         <CheckBox
                             android:id="@+id/checkboxThursday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/thursday"/>
 
                         <CheckBox
                             android:id="@+id/checkboxFriday"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/white"
+                            android:textColor="?attr/colorText"
                             android:text="@string/friday"/>
 
                         <CheckBox
@@ -269,7 +269,7 @@
                     android:layout_weight="1"
                     android:text="Время начала"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="18sp" />
 
                 <TextView
@@ -278,7 +278,7 @@
                     android:layout_height="wrap_content"
                     android:text="12 : 00"
                     android:textAlignment="center"
-                    android:textColor="#FFFFFF"
+                    android:textColor="?attr/colorText"
                     android:textSize="34sp"
                     android:textStyle="bold" />
 

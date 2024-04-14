@@ -5,6 +5,6 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="colorBackground">@color/colorPrimaryDark</item>
-
+        <item name="colorText">@color/colorTextDark</item>
     </style>
 </resources>
