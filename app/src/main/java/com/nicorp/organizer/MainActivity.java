@@ -7,10 +7,15 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +37,37 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, 0);
             }
         }
+        ConstraintLayout loadingPB = findViewById(R.id.loadingPB);
+
+        // Initialize fade out animation
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator());
+        fadeOut.setStartOffset(1500);
+        fadeOut.setDuration(1000);
+        AnimationSet animation = new AnimationSet(false);
+        animation.addAnimation(fadeOut);
+
+        // Start fade out animation
+        loadingPB.startAnimation(animation);
+
+        // Set a listener to be notified when the animation ends
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                // Not needed for this example
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                // Set the visibility of loadingPB to "gone" after the animation ends
+                loadingPB.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+                // Not needed for this example
+            }
+        });
 
         // Load theme from SharedPreferences
         SharedPreferences preferences = getSharedPreferences("Themes", MODE_PRIVATE);
