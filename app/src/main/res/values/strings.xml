@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">Управление задачами</string>
-    <string name="title">Заголовок</string>
-    <string name="description">Описание</string>
+    <string name="app_name">NI Organizer</string>
     <string name="select_date">Выбрать дату</string>
     <string name="select_time">Выбрать время</string>
     <string name="save">Сохранить</string>
