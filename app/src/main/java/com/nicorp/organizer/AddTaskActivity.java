@@ -344,6 +344,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -376,7 +377,7 @@ public class AddTaskActivity extends AppCompatActivity implements ColorPickerDia
     private CheckBox[] dayCheckBoxes;
     private RadioGroup radioGroup;
     private RadioButton radioButtonOnce, radioButtonRecurring;
-    private ScrollView recurringOptionsLayout;
+    private HorizontalScrollView recurringOptionsLayout;
 
     private Calendar calendar = Calendar.getInstance();
     private Task task;

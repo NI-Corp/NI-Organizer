@@ -185,69 +185,71 @@
                     android:textSize="34sp"
                     android:textStyle="bold" />
 
-                <ScrollView
+                <HorizontalScrollView
                     android:id="@+id/recurringOptionsLayout"
-                    android:visibility="gone"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp">
+
                     <GridLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:rowCount="1"
                         android:layout_marginTop="8dp"
+                        android:rowCount="1"
                         android:useDefaultMargins="true">
 
-                        <CheckBox
-                            android:id="@+id/checkboxSunday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/sunday" />
+                            <CheckBox
+                                android:id="@+id/checkboxSunday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sunday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxMonday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/monday" />
+                            <CheckBox
+                                android:id="@+id/checkboxMonday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/monday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxTuesday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/tuesday" />
+                            <CheckBox
+                                android:id="@+id/checkboxTuesday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tuesday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxWednesday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/wednesday" />
+                            <CheckBox
+                                android:id="@+id/checkboxWednesday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wednesday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxThursday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/thursday"/>
+                            <CheckBox
+                                android:id="@+id/checkboxThursday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/thursday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxFriday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="?attr/colorText"
-                            android:text="@string/friday"/>
+                            <CheckBox
+                                android:id="@+id/checkboxFriday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/friday"
+                                android:textColor="?attr/colorText" />
 
-                        <CheckBox
-                            android:id="@+id/checkboxSaturday"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/white"
-                            android:text="@string/saturday"/>
+                            <CheckBox
+                                android:id="@+id/checkboxSaturday"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/saturday"
+                                android:textColor="@color/white" />
 
-                    </GridLayout>
-                </ScrollView>
+                        </GridLayout>
+                    </HorizontalScrollView>
+
             </LinearLayout>
 
             <LinearLayout

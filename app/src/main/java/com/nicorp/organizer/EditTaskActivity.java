@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -54,7 +55,7 @@ public class EditTaskActivity extends AppCompatActivity implements ColorPickerDi
     private ImageView saveButton, cancelButton, deleteButton;
     private CheckBox checkboxSunday, checkboxMonday, checkboxTuesday, checkboxWednesday, checkboxThursday, checkboxFriday, checkboxSaturday;
     private RadioGroup radioGroup;
-    private ScrollView recurringOptionsLayout;
+    private HorizontalScrollView recurringOptionsLayout;
     private ConstraintLayout colorItem;
     private Calendar calendar = Calendar.getInstance();
     private int taskHourOfDay, taskMinute, taskDay;
