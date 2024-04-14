@@ -155,7 +155,24 @@ public class EditTaskActivity extends AppCompatActivity implements ColorPickerDi
                     // set checkboxes for recurring tasks
                     for (Task taskWithSameGroupId : tasksWithSameGroupId) {
                         if (taskWithSameGroupId.getTaskId() == task.getTaskId()) {
-                            continue;
+                            Calendar cal = Calendar.getInstance();
+                            cal.setTimeInMillis(task.getDateTime());
+                            int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK);
+                            if (dayOfWeek == Calendar.SUNDAY) {
+                                checkboxSunday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.MONDAY) {
+                                checkboxMonday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.TUESDAY ) {
+                                checkboxTuesday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.WEDNESDAY ) {
+                                checkboxWednesday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.THURSDAY ) {
+                                checkboxThursday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.FRIDAY ) {
+                                checkboxFriday.setChecked(true);
+                            }  if (dayOfWeek == Calendar.SATURDAY ) {
+                                checkboxSaturday.setChecked(true);
+                            }
                         } else {
                             if (taskWithSameGroupId.isRecurring()) {
                                 // if the day of the week is the same, set the checkbox to checked

@@ -6,5 +6,7 @@
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
         <item name="colorBackground">@color/colorPrimaryDark</item>
         <item name="colorText">@color/colorTextDark</item>
+        <item name="colorBackgroundSecondary">@color/colorPrimarySecondDark</item>
+        <item name="colorBackgroundThird">@color/colorPrimaryThirdDark</item>
     </style>
 </resources>
