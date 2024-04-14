@@ -38,6 +38,10 @@ public class TasksAdapter extends RecyclerView.Adapter<TasksAdapter.TaskViewHold
         holder.taskTime.setText(formatTime(task.getDateTime()));
         holder.itemColor.setBackgroundColor(task.getColor());
 
+        // test
+        holder.remainingTime.setVisibility(View.GONE);
+        // TODO: task remainingTime work correct
+
         holder.taskMainLayout.setOnClickListener(v -> {
             // Go to the task details screen with putExtra params
             Intent taskDetailsIntent = new Intent(v.getContext(), EditTaskActivity.class);

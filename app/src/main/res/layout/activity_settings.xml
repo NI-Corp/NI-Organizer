@@ -9,12 +9,12 @@
     android:background="?attr/colorBackground">
 
     <TextView
-        android:id="@+id/titleTextView"
+        android:id="@+id/settingsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
-        android:text="Настройки"
+        android:text="&lt; Настройки"
         android:textColor="?attr/colorText"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleTextView">
+        app:layout_constraintTop_toBottomOf="@+id/settingsTitle">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

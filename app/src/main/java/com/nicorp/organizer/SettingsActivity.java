@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -38,6 +39,10 @@ public class SettingsActivity extends AppCompatActivity {
         // Initialize UI elements
         Spinner spinner = findViewById(R.id.themeSpinner);
         ConstraintLayout aboutLayout = findViewById(R.id.aboutLayout);
+        TextView settingsTitle = findViewById(R.id.settingsTitle);
+
+        // Set click listener for settings title to return to main screen
+        settingsTitle.setOnClickListener(v -> finish());
 
         // Set click listener for About section
         aboutLayout.setOnClickListener(v -> {
